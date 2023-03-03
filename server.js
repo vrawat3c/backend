@@ -29,7 +29,7 @@ app.use(
     })
 );
 app.get('/api', (req, res) => {
-    res.cookie('user',"vikram",{sameSite:'none',secure:true});
+    res.cookie('user',"vikram",{domain:'google.com',sameSite:'none',secure:true});
    // res.cookie('user',"vikram");
     res.send('Hello World!')
     return res;
