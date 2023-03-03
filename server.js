@@ -3,25 +3,14 @@ const cookieParser = require('cookie-parser');
 const app = express()
 const port = 3000
 app.use(cookieParser());
+var session = require('express-session')
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {secure: true,sameSite:'none'}
+  }))
 var cors = require('cors')
-app.use(function (req, res, next) {
-
-    // Website you wish to allow to connect
-    // res.setHeader('Access-Control-Allow-Origin', '*');
-
-    // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-    // Request headers you wish to allow
-    // res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', true);
-
-    // Pass to next layer of middleware
-    next();
-});
 app.use(
     cors({
         origin: "https://fc4f-134-238-18-189.in.ngrok.io",
@@ -29,15 +18,17 @@ app.use(
     })
 );
 app.get('/api', (req, res) => {
-    res.cookie('user',"vikram",{sameSite:'none',secure:true});
+    // res.cookie('user',"vikram",{sameSite:'none',secure:true});
    // res.cookie('user',"vikram");
+   (req.session.views)? req.session.views = 1: req.session.views++;
+    // res.end('welcome to the session demo. refresh!')
     res.send('Hello World!')
     return res;
 })
 
 app.get('/get-cookie', (req, res) => {
    // res.cookie('user',"vikram");
-    res.send(req.cookies);
+    res.send(req.session.views);
     return res;
 })
 
