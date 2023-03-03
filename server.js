@@ -8,7 +8,7 @@ app.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: false,
-    cookie: {secure: true,sameSite:'none'}
+    cookie: {secure: "auto",sameSite:'none'}
   }))
 var cors = require('cors')
 app.use(
