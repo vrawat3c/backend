@@ -18,9 +18,10 @@ app.use(
     })
 );
 app.get('/api', (req, res) => {
-    // res.cookie('user',"vikram",{sameSite:'none',secure:true});
+    res.cookie('user',"vikram",{sameSite:'none',secure:true});
    // res.cookie('user',"vikram");
    (req.session.views)? req.session.views = 1: req.session.views++;
+   req.session.save();
     // res.end('welcome to the session demo. refresh!')
     res.send('Hello World!')
     return res;
