@@ -24,7 +24,7 @@ app.use(function (req, res, next) {
 });
 app.use(
     cors({
-        origin: "http://localhost:4200",
+        origin: "https://fc4f-134-238-18-189.in.ngrok.io",
         credentials: true,
     })
 );
