@@ -6,17 +6,20 @@ app.use(cookieParser());
 var session = require('express-session')
 app.use(session({
     secret: 'keyboard cat',
+    sameSite: 'none',
     resave: false,
     saveUninitialized: false,
-    cookie: {secure: "auto",sameSite:'none'}
+    secure: true,
   }))
 var cors = require('cors')
+// app.use(express.static('public'));
 app.use(
     cors({
-        origin: "https://fc4f-134-238-18-189.in.ngrok.io",
+        origin: "https://3303-134-238-18-189.in.ngrok.io",
         credentials: true,
     })
 );
+
 app.get('/api', (req, res) => {
     res.cookie('user',"vikram",{sameSite:'none',secure:true});
    // res.cookie('user',"vikram");
