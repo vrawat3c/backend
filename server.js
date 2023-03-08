@@ -20,7 +20,7 @@ app.use(session({
 //     sameSite: 'none',
 //     secure: true,
 // }))
-app.enable('trust proxy');
+// app.enable('trust proxy');
 var cors = require('cors')
 // app.use(express.static('public'));
 app.use(
