@@ -3,7 +3,7 @@ const express = require('express')
 var cookieSession = require('cookie-session')
 const app = express()
 const port = 3000
-app.use(cookieParser());
+// app.use(cookieParser());
 // var session = require('express-session')
 // app.use(session({
 //     secret: 'keyboard cat',
