@@ -1,16 +1,25 @@
 const express = require('express')
-const cookieParser = require('cookie-parser');
+//const cookieParser = require('cookie-parser');
+var cookieSession = require('cookie-session')
 const app = express()
 const port = 3000
 app.use(cookieParser());
-var session = require('express-session')
-app.use(session({
+// var session = require('express-session')
+// app.use(session({
+//     secret: 'keyboard cat',
+//     resave: false,
+//     saveUninitialized: false,
+//     cookie:{
+//         sameSite: 'none',
+//         secure: true,
+//     },
+//   }))
+app.use(cookieSession({
     secret: 'keyboard cat',
     sameSite: 'none',
-    resave: false,
-    saveUninitialized: false,
     secure: true,
-  }))
+}))
+app.enable('trust proxy');
 var cors = require('cors')
 // app.use(express.static('public'));
 app.use(
