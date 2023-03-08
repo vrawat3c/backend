@@ -2,6 +2,7 @@ const express = require('express')
 //const cookieParser = require('cookie-parser');
 var cookieSession = require('cookie-session')
 const app = express()
+app.set('trust proxy', 1)
 const port = 3000
 // app.use(cookieParser());
 // var session = require('express-session')
