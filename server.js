@@ -25,7 +25,7 @@ var cors = require('cors')
 // app.use(express.static('public'));
 app.use(
     cors({
-        origin: "https://33fc-134-238-18-189.in.ngrok.io",
+        origin: "https://3138-134-238-18-189.in.ngrok.io",
         credentials: true,
     })
 );
